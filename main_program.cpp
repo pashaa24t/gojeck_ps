@@ -4,12 +4,12 @@ using namespace std;
 class customer 
 {
   public :
-  int d = 0;
-  int c = 0;
-  customers(int d , int c)
+  int d , c ;
+  
+  customer()
   {
-      this->d = d;
-      this->c = c;
+     d =0 ;
+     c =0;
   }
 };
 pair<int,int> balace(int d , int c)
@@ -46,22 +46,39 @@ pair<int,int> balace(int d , int c)
     
 }
 int main() {
-    customer first(0,0);
+    customer first;
     int choice;
     int dol , cent ;
     char x , y;
    while(1)
   {
       cout<<"$ Select an option:"<<endl;
-      cout<<"1.Credit"<<endl<<"2.Debit"<<endl<<"Check Balance"<<endl<<"Exit"<<end;
+      cout<<"1.Credit"<<endl<<"2.Debit"<<endl<<"3.Check Balance"<<endl<<"4.Exit"<<endl;
+      
       cin>>choice;
       
       if(choice == 1)
       {
           cout<<"$ Enter Amount."<<endl;
-          string dstr , cstr ;
-          getline(dstr,cin,'D');
-          getline(cstr,cin,'C');
+          string  str,dstr , cstr ;
+          cin>>str;
+          
+         int i=0;
+         for(i=0;i<str.length();i++)
+         {
+             if(str[i] != 'D')
+                dstr += str[i];
+            else
+                break;
+         }
+         i++;
+         for( ; i<str.length();i++)
+         {
+             if(str[i] == 'C')
+                cstr += str[i];
+            else
+                break;
+         }
           
           dol = stoi(dstr);
           cent = stoi(cstr);
@@ -77,13 +94,29 @@ int main() {
       else if(choice == 2)
       {
           cout<<"$ Enter Amount."<<endl;
-          string dstr , cstr ;
-          getline(dstr,cin,'D');
-          getline(cstr,cin,'C');
+          string str,dstr , cstr ;
+          cin>>str;
+          int i=0;
+         for(i=0;i<str.length();i++)
+         {
+             if(str[i] != 'D')
+                dstr += str[i];
+            else
+                break;
+         }
+         i++;
+         for( ; i<str.length();i++)
+         {
+             if(str[i] == 'C')
+                cstr += str[i];
+            else
+                break;
+         }
           
           dol = stoi(dstr);
           cent = stoi(cstr);
-           first.d -=  dol ;
+          
+          first.d -=  dol ;
           first.c -= cent;
           pair<int,int> p = balace(first.d , first.c);
           
