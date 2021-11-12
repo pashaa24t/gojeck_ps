@@ -12,6 +12,16 @@ class customer
      c =0;
   }
 };
+int stringtoint(string s)
+{
+    int fact = 1,res=0;
+    for(int i = s.length()-1 ; i>=0;i--)
+    {
+        res += int(s[i] - 65) * fact;
+        fact *= 10;
+    }
+    return res;
+}
 pair<int,int> balace(int d , int c)
 {
     if(c > 0)
@@ -80,8 +90,8 @@ int main() {
                 break;
          }
           
-          dol = stoi(dstr);
-          cent = stoi(cstr);
+          dol = stringtoint(dstr);
+          cent = stringtoint(cstr);
           
           first.d +=  dol ;
           first.c += cent;
@@ -106,15 +116,15 @@ int main() {
          }
          i++;
          for( ; i<str.length();i++)
-         {
+         { 
              if(str[i] == 'C')
                 cstr += str[i];
             else
                 break;
          }
           
-          dol = stoi(dstr);
-          cent = stoi(cstr);
+          dol = stringtoint(dstr);
+          cent = stringtoint(cstr);
           
           first.d -=  dol ;
           first.c -= cent;
